@@ -1,0 +1,99 @@
+on: [push, pull_request]
+name: Test
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+        target: [
+          aarch64-macos,
+          x86_64-macos,
+
+          aarch64-linux-gnu,
+          x86_64-linux-gnu,
+
+          # No windows support currently.
+          # i386-windows,
+          # x86_64-windows-gnu,
+        ]
+    runs-on: ${{ matrix.os }}
+    needs: test
+    env:
+      # Needed for macos SDK
+      AGREE: "true"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    # Install Nix and use that to run our tests so our environment matches exactly.
+    - uses: cachix/install-nix-action@v23
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    # Cross-compile the binary. We always use static building for this
+    # because its the only way to access the headers.
+    - name: Test Build
+      run: nix develop -c zig build -Dstatic=true -Dapp-runtime=glfw -Dtarget=${{ matrix.target }}
+
+  build-macos:
+    runs-on: macos-12
+    needs: test
+    env:
+      # Needed for macos SDK
+      AGREE: "true"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    # Install Nix and use that to run our tests so our environment matches exactly.
+    - uses: cachix/install-nix-action@v23
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    # GhosttyKit is the framework that is built from Zig for our native
+    # Mac app to access.
+    - name: Build GhosttyKit
+      run: nix develop -c zig build -Dstatic=true
+
+    # The native app is built with native XCode tooling. This also does
+    # codesigning. IMPORTANT: this must NOT run in a Nix environment.
+    # Nix breaks xcodebuild so this has to be run outside.
+    - name: Build Ghostty.app
+      run: cd macos && xcodebuild
+
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    # Install Nix and use that to run our tests so our environment matches exactly.
+    - uses: cachix/install-nix-action@v23
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    - name: test
+      run: nix develop -c zig build test
+
+    - name: Test GTK Build
+      run: nix develop -c zig build -Dapp-runtime=gtk
+
+    - name: Test GLFW Build
+      run: nix develop -c zig build -Dapp-runtime=glfw
+
+    - name: Test Dynamic Build
+      run: nix develop -c zig build -Dstatic=false

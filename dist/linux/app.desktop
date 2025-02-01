@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Ghostty
+Type=Application
+Comment=A terminal emulator
+Exec=ghostty
+Icon=com.mitchellh.ghostty
+Keywords=terminal;tty;pty;
+StartupNotify=true
+Terminal=false
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Window
+Actions=new-window
+Exec=ghostty

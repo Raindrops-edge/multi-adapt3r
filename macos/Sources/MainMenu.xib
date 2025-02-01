@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="bbz-4X-AYv" id="4pZ-gB-Uf0"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="bbz-4X-AYv" userLabel="AppDelegate" customClass="AppDelegate" customModule="Ghostty" customModuleProvider="target">
+            <connections>
+                <outlet property="menuClose" destination="DVo-aG-piG" id="R3t-0C-aSU"/>
+                <outlet property="menuCloseWindow" destination="W5w-UZ-crk" id="6ff-BT-ENV"/>
+                <outlet property="menuCopy" destination="Jqf-pv-Zcu" id="bKd-1C-oy9"/>
+                <outlet property="menuNewTab" destination="uTG-Vz-hJU" id="eMg-R3-SeS"/>
+                <outlet property="menuNewWindow" destination="Was-JA-tGl" id="lK7-3I-CPG"/>
+                <outlet property="menuNextSplit" destination="bD7-ei-wKU" id="LeT-xw-eh4"/>
+                <outlet property="menuPaste" destination="i27-pK-umN" id="ICc-X2-gV3"/>
+                <outlet property="menuPreviousSplit" destination="Lic-px-1wg" id="Rto-CG-yRe"/>
+                <outlet property="menuQuit" destination="4sb-4s-VLi" id="qYN-S1-6UW"/>
+                <outlet property="menuReloadConfig" destination="KKH-XX-5py" id="Wvp-7J-wqX"/>
+                <outlet property="menuSelectSplitAbove" destination="0yU-hC-8xF" id="aPc-lS-own"/>
+                <outlet property="menuSelectSplitBelow" destination="QDz-d9-CBr" id="FsH-Dq-jij"/>
+                <outlet property="menuSelectSplitLeft" destination="cTK-oy-KuV" id="Jpr-5q-dqz"/>
+                <outlet property="menuSelectSplitRight" destination="upj-mc-L7X" id="nLY-o1-lky"/>
+                <outlet property="menuSplitHorizontal" destination="VUR-Ld-nLx" id="RxO-Zw-ovb"/>
+                <outlet property="menuSplitVertical" destination="UDZ-4y-6xL" id="fgZ-Wb-8OR"/>
+                <outlet property="menuZoomSplit" destination="oPd-mn-IEH" id="wTu-jK-egI"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+            <items>
+                <menuItem title="Ghostty" id="1Xt-HY-uBw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Ghostty" systemMenu="apple" id="uQy-DD-JDr">
+                        <items>
+                            <menuItem title="About Ghostty" id="5kV-Vb-QxS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                            <menuItem title="Reload Configuration" id="KKH-XX-5py">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reloadConfig:" target="bbz-4X-AYv" id="h5x-tu-Izk"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
+                            <menuItem title="Hide Ghostty" keyEquivalent="h" id="Olw-nP-bQN">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="VT4-aY-XCT"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="Kd2-mp-pUS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="Dhg-Le-xox"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                            <menuItem title="Quit Ghostty" id="4sb-4s-VLi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="File" id="dMs-cI-mzQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="File" id="bib-Uj-vzu">
+                        <items>
+                            <menuItem title="New Window" id="Was-JA-tGl">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="newWindow:" target="bbz-4X-AYv" id="NnC-l5-DUY"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="New Tab" id="uTG-Vz-hJU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="newTab:" target="bbz-4X-AYv" id="cxO-CS-TJq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
+                            <menuItem title="Split Horizontally" id="VUR-Ld-nLx">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="splitHorizontally:" target="bbz-4X-AYv" id="QT1-Yt-gYJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Split Vertically" id="UDZ-4y-6xL">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="splitVertically:" target="bbz-4X-AYv" id="ZZF-3f-OwW"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="sjq-M1-UGS"/>
+                            <menuItem title="Close" id="DVo-aG-piG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="close:" target="bbz-4X-AYv" id="Szc-Fu-9yk"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Close Window" id="W5w-UZ-crk">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="closeWindow:" target="bbz-4X-AYv" id="j4w-Nd-9bO"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Edit" id="ZUG-Nx-Wkj">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="iU4-OB-ccf">
+                        <items>
+                            <menuItem title="Copy" id="Jqf-pv-Zcu">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="copy:" target="-1" id="B4F-hg-R4T"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" id="i27-pK-umN">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="paste:" target="-1" id="ZKe-2B-mel"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="VYS-RG-uZD"/>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="aUF-d1-5bR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="R4o-n2-Eq4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="DIl-cC-cCs"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
+                            <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="DRN-fu-gQh"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="rlu-tP-x0P"/>
+                            <menuItem title="Zoom Split" id="oPd-mn-IEH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="splitZoom:" target="bbz-4X-AYv" id="h3L-kI-kTJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select Previous Split" id="Lic-px-1wg">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="splitMoveFocusPrevious:" target="bbz-4X-AYv" id="mOs-gG-dAC"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select Next Split" id="bD7-ei-wKU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="splitMoveFocusNext:" target="bbz-4X-AYv" id="rU6-Vw-DoW"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select Split" id="dos-9S-LXC">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Select Split" id="8tg-60-ZSU">
+                                    <items>
+                                        <menuItem title="Select Split Above" id="0yU-hC-8xF">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="splitMoveFocusAbove:" target="bbz-4X-AYv" id="HDw-f2-RJY"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select Split Below" id="QDz-d9-CBr">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="splitMoveFocusBelow:" target="bbz-4X-AYv" id="fmW-hZ-uOA"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select Split Left" id="cTK-oy-KuV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="splitMoveFocusLeft:" target="bbz-4X-AYv" id="N1i-a2-7N5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select Split Right" id="upj-mc-L7X">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="splitMoveFocusRight:" target="bbz-4X-AYv" id="Pgi-df-84r"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="wpr-3q-Mcd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+                        <items>
+                            <menuItem title="Ghostty Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                <connections>
+                                    <action selector="showHelp:" target="bbz-4X-AYv" id="tiy-ow-xSw"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="139" y="154"/>
+        </menu>
+    </objects>
+</document>

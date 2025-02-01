@@ -1,0 +1,158 @@
+on:
+  workflow_run:
+    workflows: [Test]
+    types: [completed]
+    branches: [main]
+
+  workflow_dispatch: {}
+
+name: Release Tip
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    needs: [build-macos]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Tip Tag
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git tag -fa tip -m "Latest Continuous Release" ${GITHUB_SHA}
+        git push --force origin tip
+
+  build-macos:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: macos-12
+    timeout-minutes: 90
+    env:
+      # Needed for macos SDK
+      AGREE: "true"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    # Install Nix and use that to run our tests so our environment matches exactly.
+    - uses: cachix/install-nix-action@v23
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    # Setup our S3 client
+    - name: Setup s3cmd
+      uses: s3-actions/s3cmd@v1.5.0
+      with:
+        provider: cloudflare
+        account_id: ${{ secrets.CF_R2_TIP_ACCOUNT_ID }}
+        access_key: ${{ secrets.CF_R2_TIP_AWS_KEY }}
+        secreT_key: ${{ secrets.CF_R2_TIP_SECRET_KEY }}
+
+    # Load Build Number
+    - name: Build Number
+      run: |
+        echo "GHOSTTY_BUILD=$(git rev-list --count head)" >> $GITHUB_ENV
+
+    # GhosttyKit is the framework that is built from Zig for our native
+    # Mac app to access. Build this in release mode.
+    - name: Build GhosttyKit
+      run: nix develop -c zig build -Dstatic=true -Doptimize=ReleaseFast
+
+    # The native app is built with native XCode tooling. This also does
+    # codesigning. IMPORTANT: this must NOT run in a Nix environment.
+    # Nix breaks xcodebuild so this has to be run outside.
+    - name: Build Ghostty.app
+      run: cd macos && xcodebuild -configuration Release
+
+    # We inject the "build number" as simply the number of commits since HEAD.
+    # This will be a monotonically always increasing build number that we use.
+    - name: Inject Build Number
+      run: |
+        echo "Setting build to $GHOSTTY_BUILD"
+        /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $GHOSTTY_BUILD" "macos/build/Release/Ghostty.app/Contents/Info.plist"
+
+    - name: Zip Unsigned App
+      run: nix develop -c sh -c 'cd macos/build/Release && zip -9 -r --symlinks ../../../ghostty-macos-universal-unsigned.zip Ghostty.app'
+
+    # Update Release
+    - name: Release Unsigned
+      uses: softprops/action-gh-release@v1
+      with:
+        name: "Ghostty Tip (\"Nightly\")"
+        prerelease: true
+        tag_name: tip
+        target_commitish: ${{ github.sha }}
+        files: ghostty-macos-universal-unsigned.zip
+        token: ${{ secrets.GH_RELEASE_TOKEN }}
+
+    - name: Codesign app bundle
+      env:
+        MACOS_CERTIFICATE: ${{ secrets.PROD_MACOS_CERTIFICATE }}
+        MACOS_CERTIFICATE_PWD: ${{ secrets.PROD_MACOS_CERTIFICATE_PWD }}
+        MACOS_CERTIFICATE_NAME: ${{ secrets.PROD_MACOS_CERTIFICATE_NAME }}
+        MACOS_CI_KEYCHAIN_PWD: ${{ secrets.PROD_MACOS_CI_KEYCHAIN_PWD }}
+      run: |
+        # Turn our base64-encoded certificate back to a regular .p12 file
+        echo $MACOS_CERTIFICATE | base64 --decode > certificate.p12
+
+        # We need to create a new keychain, otherwise using the certificate will prompt
+        # with a UI dialog asking for the certificate password, which we can't
+        # use in a headless CI environment
+        security create-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain
+        security default-keychain -s build.keychain
+        security unlock-keychain -p "$MACOS_CI_KEYCHAIN_PWD" build.keychain
+        security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PWD" -T /usr/bin/codesign
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$MACOS_CI_KEYCHAIN_PWD" build.keychain
+
+        # We finally codesign our app bundle, specifying the Hardened runtime option
+        /usr/bin/codesign --force -s "$MACOS_CERTIFICATE_NAME" --options runtime macos/build/Release/Ghostty.app -v
+
+    - name: "Notarize app bundle"
+      env:
+        PROD_MACOS_NOTARIZATION_APPLE_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_APPLE_ID }}
+        PROD_MACOS_NOTARIZATION_TEAM_ID: ${{ secrets.PROD_MACOS_NOTARIZATION_TEAM_ID }}
+        PROD_MACOS_NOTARIZATION_PWD: ${{ secrets.PROD_MACOS_NOTARIZATION_PWD }}
+      run: |
+        # Store the notarization credentials so that we can prevent a UI password dialog
+        # from blocking the CI
+        echo "Create keychain profile"
+        xcrun notarytool store-credentials "notarytool-profile" --apple-id "$PROD_MACOS_NOTARIZATION_APPLE_ID" --team-id "$PROD_MACOS_NOTARIZATION_TEAM_ID" --password "$PROD_MACOS_NOTARIZATION_PWD"
+
+        # We can't notarize an app bundle directly, but we need to compress it as an archive.
+        # Therefore, we create a zip file containing our app bundle, so that we can send it to the
+        # notarization service
+        echo "Creating temp notarization archive"
+        ditto -c -k --keepParent "macos/build/Release/Ghostty.app" "notarization.zip"
+
+        # Here we send the notarization request to the Apple's Notarization service, waiting for the result.
+        # This typically takes a few seconds inside a CI environment, but it might take more depending on the App
+        # characteristics. Visit the Notarization docs for more information and strategies on how to optimize it if
+        # you're curious
+        echo "Notarize app"
+        xcrun notarytool submit "notarization.zip" --keychain-profile "notarytool-profile" --wait
+
+        # Finally, we need to "attach the staple" to our executable, which will allow our app to be
+        # validated by macOS even when an internet connection is not available.
+        echo "Attach staple"
+        xcrun stapler staple "macos/build/Release/Ghostty.app"
+
+    # Zip up the app
+    - name: Zip App
+      run: cd macos/build/Release && zip -9 -r --symlinks ../../../ghostty-macos-universal.zip Ghostty.app
+
+    # Update Release
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: "Ghostty Tip (\"Nightly\")"
+        prerelease: true
+        tag_name: tip
+        target_commitish: ${{ github.sha }}
+        files: ghostty-macos-universal.zip
+        token: ${{ secrets.GH_RELEASE_TOKEN }}
+
+    # Update Blob Storage
+    - name: Upload to Blob Storage
+      run: |
+        s3cmd put ghostty-macos-universal.zip s3://ghostty-tip/${GHOSTTY_BUILD}/ghostty-macos-universal.zip
