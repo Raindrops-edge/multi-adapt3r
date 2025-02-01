@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Folders</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.directory</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSEnvironment</key>
+	<dict>
+		<key>GHOSTTY_MAC_APP</key>
+		<string>1</string>
+	</dict>
+    <key>NSServices</key>
+    <array>
+        <dict>
+            <key>NSMenuItem</key>
+            <dict>
+                <key>default</key>
+                <string>New Ghostty Tab Here</string>
+            </dict>
+            <key>NSMessage</key>
+            <string>openTab</string>
+            <key>NSRequiredContext</key>
+            <dict>
+                <key>NSTextContent</key>
+                <string>FilePath</string>
+            </dict>
+            <key>NSSendTypes</key>
+            <array>
+                <string>NSFilenamesPboardType</string>
+                <string>public.plain-text</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSMenuItem</key>
+            <dict>
+                <key>default</key>
+                <string>New Ghostty Window Here</string>
+            </dict>
+            <key>NSMessage</key>
+            <string>openWindow</string>
+            <key>NSRequiredContext</key>
+            <dict>
+                <key>NSTextContent</key>
+                <string>FilePath</string>
+            </dict>
+            <key>NSSendTypes</key>
+            <array>
+                <string>NSFilenamesPboardType</string>
+                <string>public.plain-text</string>
+            </array>
+        </dict>
+    </array>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>A program in Ghostty wants to use AppleScript.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>A program in Ghostty wants to use your calendar.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>A program in Ghostty wants to use the camera.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>A program in Ghostty wants to use your contacts.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>A program in Ghostty wants to access the local network.</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<string>A program in Ghostty wants to use your location temporarily.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>A program in Ghostty wants to use your location information.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>A program in Ghostty wants to use your microphone.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>A program in Ghostty wants to access motion data.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>A program in Ghostty wants to use your photo library.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>A program in Ghostty wants to access your reminders.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>A program in Ghostty wants to use speech recognition.</string>
+	<key>NSSystemAdministrationUsageDescription</key>
+	<string>A program in Ghostty requires elevated privileges.</string>
+	<key>SUPublicEDKey</key>
+	<string>wsNcGf5hirwtdXMVnYoxRIX/SqZQLMOsYlD3q3imeok=</string>
+	<key>CFBundleVersion</key>
+	<string></string>
+	<key>CFBundleShortVersionString</key>
+	<string></string>
+	<key>GhosttyCommit</key>
+	<string></string>
+</dict>
+</plist>

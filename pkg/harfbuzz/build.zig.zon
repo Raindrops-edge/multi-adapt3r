@@ -1,0 +1,14 @@
+.{
+    .name = "harfbuzz",
+    .version = "8.2.2",
+    .dependencies = .{
+        .harfbuzz = .{
+            .url = "https://github.com/harfbuzz/harfbuzz/archive/refs/tags/8.2.2.tar.gz",
+            .hash = "1220d27d0e3ddd47705cbe1505076058cb41649336d35ea51369ec8f042c35991e0f",
+        },
+
+        .freetype = .{ .path = "../freetype" },
+        .macos = .{ .path = "../macos" },
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}

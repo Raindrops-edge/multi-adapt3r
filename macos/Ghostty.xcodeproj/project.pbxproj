@@ -1,0 +1,730 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55154BE02B33911F001622DC /* ghostty in Resources */ = {isa = PBXBuildFile; fileRef = 55154BDF2B33911F001622DC /* ghostty */; };
+		552964E62B34A9B400030505 /* vim in Resources */ = {isa = PBXBuildFile; fileRef = 552964E52B34A9B400030505 /* vim */; };
+		8503D7C72A549C66006CFF3D /* FullScreenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503D7C62A549C66006CFF3D /* FullScreenHandler.swift */; };
+		857F63812A5E64F200CA4815 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 857F63802A5E64F200CA4815 /* MainMenu.xib */; };
+		A51B78472AF4B58B00F3EDB9 /* TerminalWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B78462AF4B58B00F3EDB9 /* TerminalWindow.swift */; };
+		A51BFC1E2B2FB5CE00E92F16 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51BFC1D2B2FB5CE00E92F16 /* About.xib */; };
+		A51BFC202B2FB64F00E92F16 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BFC1F2B2FB64F00E92F16 /* AboutController.swift */; };
+		A51BFC222B2FB6B400E92F16 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BFC212B2FB6B400E92F16 /* AboutView.swift */; };
+		A51BFC272B30F1B800E92F16 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A51BFC262B30F1B800E92F16 /* Sparkle */; };
+		A51BFC2B2B30F6BE00E92F16 /* UpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BFC2A2B30F6BE00E92F16 /* UpdateDelegate.swift */; };
+		A5278A9B2AA05B2600CD3039 /* Ghostty.Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5278A9A2AA05B2600CD3039 /* Ghostty.Input.swift */; };
+		A53426352A7DA53D00EBB7A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53426342A7DA53D00EBB7A2 /* AppDelegate.swift */; };
+		A535B9DA299C569B0017E2E4 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A535B9D9299C569B0017E2E4 /* ErrorView.swift */; };
+		A55685E029A03A9F004303CE /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55685DF29A03A9F004303CE /* AppError.swift */; };
+		A55B7BB629B6F47F0055DE60 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B7BB529B6F47F0055DE60 /* AppState.swift */; };
+		A55B7BB829B6F53A0055DE60 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B7BB729B6F53A0055DE60 /* Package.swift */; };
+		A55B7BBC29B6FC330055DE60 /* SurfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B7BBB29B6FC330055DE60 /* SurfaceView.swift */; };
+		A56B880B2A840447007A0E29 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56B880A2A840447007A0E29 /* Carbon.framework */; };
+		A56D58862ACDDB4100508D2C /* Ghostty.Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D58852ACDDB4100508D2C /* Ghostty.Shell.swift */; };
+		A56D58892ACDE6CA00508D2C /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D58882ACDE6CA00508D2C /* ServiceProvider.swift */; };
+		A571AB1D2A206FCF00248498 /* GhosttyKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D495A1299BEC7E00DD1313 /* GhosttyKit.xcframework */; };
+		A59444F729A2ED5200725BBA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59444F629A2ED5200725BBA /* SettingsView.swift */; };
+		A59630972AEE163600D64628 /* HostingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59630962AEE163600D64628 /* HostingWindow.swift */; };
+		A596309A2AEE1C6400D64628 /* Terminal.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59630992AEE1C6400D64628 /* Terminal.xib */; };
+		A596309C2AEE1C9E00D64628 /* TerminalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596309B2AEE1C9E00D64628 /* TerminalController.swift */; };
+		A596309E2AEE1D6C00D64628 /* TerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596309D2AEE1D6C00D64628 /* TerminalView.swift */; };
+		A59630A02AEF6AEB00D64628 /* TerminalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A596309F2AEF6AEB00D64628 /* TerminalManager.swift */; };
+		A59630A22AF0415000D64628 /* Ghostty.TerminalSplit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59630A12AF0415000D64628 /* Ghostty.TerminalSplit.swift */; };
+		A59630A42AF059BB00D64628 /* Ghostty.SplitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59630A32AF059BB00D64628 /* Ghostty.SplitNode.swift */; };
+		A59FB5CF2AE0DB50009128F3 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FB5CE2AE0DB50009128F3 /* InspectorView.swift */; };
+		A59FB5D12AE0DEA7009128F3 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59FB5D02AE0DEA7009128F3 /* MetalView.swift */; };
+		A5A1F8852A489D6800D1E8BC /* terminfo in Resources */ = {isa = PBXBuildFile; fileRef = A5A1F8842A489D6800D1E8BC /* terminfo */; };
+		A5B30539299BEAAB0047F10C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5B30538299BEAAB0047F10C /* Assets.xcassets */; };
+		A5CDF1912AAF9A5800513312 /* ConfigurationErrors.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CDF1902AAF9A5800513312 /* ConfigurationErrors.xib */; };
+		A5CDF1932AAF9E0800513312 /* ConfigurationErrorsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDF1922AAF9E0800513312 /* ConfigurationErrorsController.swift */; };
+		A5CDF1952AAFA19600513312 /* ConfigurationErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CDF1942AAFA19600513312 /* ConfigurationErrorsView.swift */; };
+		A5CEAFDC29B8009000646FDA /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEAFDB29B8009000646FDA /* SplitView.swift */; };
+		A5CEAFDE29B8058B00646FDA /* SplitView.Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEAFDD29B8058B00646FDA /* SplitView.Divider.swift */; };
+		A5CEAFFF29C2410700646FDA /* Backport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEAFFE29C2410700646FDA /* Backport.swift */; };
+		A5D0AF3B2B36A1DE00D21823 /* TerminalRestorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D0AF3A2B36A1DE00D21823 /* TerminalRestorable.swift */; };
+		A5D0AF3D2B37804400D21823 /* CodableBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D0AF3C2B37804400D21823 /* CodableBridge.swift */; };
+		A5E112932AF73E6E00C6E0C2 /* ClipboardConfirmation.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E112922AF73E6E00C6E0C2 /* ClipboardConfirmation.xib */; };
+		A5E112952AF73E8A00C6E0C2 /* ClipboardConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E112942AF73E8A00C6E0C2 /* ClipboardConfirmationController.swift */; };
+		A5E112972AF7401B00C6E0C2 /* ClipboardConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E112962AF7401B00C6E0C2 /* ClipboardConfirmationView.swift */; };
+		A5FEB3002ABB69450068369E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FEB2FF2ABB69450068369E /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B39CAA42B33949B00DABEB8 /* GhosttyReleaseLocal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GhosttyReleaseLocal.entitlements; sourceTree = "<group>"; };
+		55154BDF2B33911F001622DC /* ghostty */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ghostty; path = "../zig-out/share/ghostty"; sourceTree = "<group>"; };
+		552964E52B34A9B400030505 /* vim */ = {isa = PBXFileReference; lastKnownFileType = folder; name = vim; path = "../zig-out/share/vim"; sourceTree = "<group>"; };
+		8503D7C62A549C66006CFF3D /* FullScreenHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenHandler.swift; sourceTree = "<group>"; };
+		857F63802A5E64F200CA4815 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		A51B78462AF4B58B00F3EDB9 /* TerminalWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalWindow.swift; sourceTree = "<group>"; };
+		A51BFC1D2B2FB5CE00E92F16 /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
+		A51BFC1F2B2FB64F00E92F16 /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		A51BFC212B2FB6B400E92F16 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A51BFC282B30F26D00E92F16 /* GhosttyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GhosttyDebug.entitlements; sourceTree = "<group>"; };
+		A51BFC2A2B30F6BE00E92F16 /* UpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDelegate.swift; sourceTree = "<group>"; };
+		A5278A9A2AA05B2600CD3039 /* Ghostty.Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ghostty.Input.swift; sourceTree = "<group>"; };
+		A53426342A7DA53D00EBB7A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A535B9D9299C569B0017E2E4 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A55685DF29A03A9F004303CE /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		A55B7BB529B6F47F0055DE60 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A55B7BB729B6F53A0055DE60 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		A55B7BBB29B6FC330055DE60 /* SurfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceView.swift; sourceTree = "<group>"; };
+		A56B880A2A840447007A0E29 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		A56D58852ACDDB4100508D2C /* Ghostty.Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ghostty.Shell.swift; sourceTree = "<group>"; };
+		A56D58882ACDE6CA00508D2C /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		A571AB1C2A206FC600248498 /* Ghostty-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ghostty-Info.plist"; sourceTree = "<group>"; };
+		A59444F629A2ED5200725BBA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A59630962AEE163600D64628 /* HostingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingWindow.swift; sourceTree = "<group>"; };
+		A59630992AEE1C6400D64628 /* Terminal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Terminal.xib; sourceTree = "<group>"; };
+		A596309B2AEE1C9E00D64628 /* TerminalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalController.swift; sourceTree = "<group>"; };
+		A596309D2AEE1D6C00D64628 /* TerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalView.swift; sourceTree = "<group>"; };
+		A596309F2AEF6AEB00D64628 /* TerminalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalManager.swift; sourceTree = "<group>"; };
+		A59630A12AF0415000D64628 /* Ghostty.TerminalSplit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ghostty.TerminalSplit.swift; sourceTree = "<group>"; };
+		A59630A32AF059BB00D64628 /* Ghostty.SplitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ghostty.SplitNode.swift; sourceTree = "<group>"; };
+		A59FB5CE2AE0DB50009128F3 /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
+		A59FB5D02AE0DEA7009128F3 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		A5A1F8842A489D6800D1E8BC /* terminfo */ = {isa = PBXFileReference; lastKnownFileType = folder; name = terminfo; path = "../zig-out/share/terminfo"; sourceTree = "<group>"; };
+		A5B30531299BEAAA0047F10C /* Ghostty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ghostty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B30538299BEAAB0047F10C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5B3053D299BEAAB0047F10C /* Ghostty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ghostty.entitlements; sourceTree = "<group>"; };
+		A5CDF1902AAF9A5800513312 /* ConfigurationErrors.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigurationErrors.xib; sourceTree = "<group>"; };
+		A5CDF1922AAF9E0800513312 /* ConfigurationErrorsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationErrorsController.swift; sourceTree = "<group>"; };
+		A5CDF1942AAFA19600513312 /* ConfigurationErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationErrorsView.swift; sourceTree = "<group>"; };
+		A5CEAFDB29B8009000646FDA /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		A5CEAFDD29B8058B00646FDA /* SplitView.Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.Divider.swift; sourceTree = "<group>"; };
+		A5CEAFFE29C2410700646FDA /* Backport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backport.swift; sourceTree = "<group>"; };
+		A5D0AF3A2B36A1DE00D21823 /* TerminalRestorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalRestorable.swift; sourceTree = "<group>"; };
+		A5D0AF3C2B37804400D21823 /* CodableBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBridge.swift; sourceTree = "<group>"; };
+		A5D495A1299BEC7E00DD1313 /* GhosttyKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GhosttyKit.xcframework; sourceTree = "<group>"; };
+		A5E112922AF73E6E00C6E0C2 /* ClipboardConfirmation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClipboardConfirmation.xib; sourceTree = "<group>"; };
+		A5E112942AF73E8A00C6E0C2 /* ClipboardConfirmationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardConfirmationController.swift; sourceTree = "<group>"; };
+		A5E112962AF7401B00C6E0C2 /* ClipboardConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardConfirmationView.swift; sourceTree = "<group>"; };
+		A5FEB2FF2ABB69450068369E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5B3052E299BEAAA0047F10C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A51BFC272B30F1B800E92F16 /* Sparkle in Frameworks */,
+				A56B880B2A840447007A0E29 /* Carbon.framework in Frameworks */,
+				A571AB1D2A206FCF00248498 /* GhosttyKit.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A51BFC1C2B2FB5AB00E92F16 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				A51BFC1D2B2FB5CE00E92F16 /* About.xib */,
+				A51BFC1F2B2FB64F00E92F16 /* AboutController.swift */,
+				A51BFC212B2FB6B400E92F16 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		A51BFC292B30F69F00E92F16 /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				A51BFC2A2B30F6BE00E92F16 /* UpdateDelegate.swift */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		A53426362A7DC53000EBB7A2 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A56D58872ACDE6BE00508D2C /* Services */,
+				A59630982AEE1C4400D64628 /* Terminal */,
+				A5E112912AF73E4D00C6E0C2 /* ClipboardConfirmation */,
+				A534263E2A7DCC5800EBB7A2 /* Settings */,
+				A51BFC1C2B2FB5AB00E92F16 /* About */,
+				A51BFC292B30F69F00E92F16 /* Update */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A534263D2A7DCBB000EBB7A2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEAFFE29C2410700646FDA /* Backport.swift */,
+				A5D0AF3C2B37804400D21823 /* CodableBridge.swift */,
+				8503D7C62A549C66006CFF3D /* FullScreenHandler.swift */,
+				A59630962AEE163600D64628 /* HostingWindow.swift */,
+				A59FB5D02AE0DEA7009128F3 /* MetalView.swift */,
+				A5CEAFDA29B8005900646FDA /* SplitView */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A534263E2A7DCC5800EBB7A2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A59444F629A2ED5200725BBA /* SettingsView.swift */,
+				A5CDF1902AAF9A5800513312 /* ConfigurationErrors.xib */,
+				A5CDF1922AAF9E0800513312 /* ConfigurationErrorsController.swift */,
+				A5CDF1942AAFA19600513312 /* ConfigurationErrorsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A54CD6ED299BEB14008C95BB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A5FEB2FF2ABB69450068369E /* main.swift */,
+				A53426342A7DA53D00EBB7A2 /* AppDelegate.swift */,
+				857F63802A5E64F200CA4815 /* MainMenu.xib */,
+				A53426362A7DC53000EBB7A2 /* Features */,
+				A534263D2A7DCBB000EBB7A2 /* Helpers */,
+				A55B7BB429B6F4410055DE60 /* Ghostty */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A55B7BB429B6F4410055DE60 /* Ghostty */ = {
+			isa = PBXGroup;
+			children = (
+				A55B7BB729B6F53A0055DE60 /* Package.swift */,
+				A55B7BB529B6F47F0055DE60 /* AppState.swift */,
+				A55B7BBB29B6FC330055DE60 /* SurfaceView.swift */,
+				A59FB5CE2AE0DB50009128F3 /* InspectorView.swift */,
+				A5278A9A2AA05B2600CD3039 /* Ghostty.Input.swift */,
+				A56D58852ACDDB4100508D2C /* Ghostty.Shell.swift */,
+				A59630A32AF059BB00D64628 /* Ghostty.SplitNode.swift */,
+				A59630A12AF0415000D64628 /* Ghostty.TerminalSplit.swift */,
+				A55685DF29A03A9F004303CE /* AppError.swift */,
+			);
+			path = Ghostty;
+			sourceTree = "<group>";
+		};
+		A56D58872ACDE6BE00508D2C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A56D58882ACDE6CA00508D2C /* ServiceProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A59630982AEE1C4400D64628 /* Terminal */ = {
+			isa = PBXGroup;
+			children = (
+				A59630992AEE1C6400D64628 /* Terminal.xib */,
+				A596309F2AEF6AEB00D64628 /* TerminalManager.swift */,
+				A596309B2AEE1C9E00D64628 /* TerminalController.swift */,
+				A5D0AF3A2B36A1DE00D21823 /* TerminalRestorable.swift */,
+				A596309D2AEE1D6C00D64628 /* TerminalView.swift */,
+				A51B78462AF4B58B00F3EDB9 /* TerminalWindow.swift */,
+				A535B9D9299C569B0017E2E4 /* ErrorView.swift */,
+			);
+			path = Terminal;
+			sourceTree = "<group>";
+		};
+		A5A1F8862A489D7400D1E8BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55154BDF2B33911F001622DC /* ghostty */,
+				552964E52B34A9B400030505 /* vim */,
+				A5A1F8842A489D6800D1E8BC /* terminfo */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A5B30528299BEAAA0047F10C = {
+			isa = PBXGroup;
+			children = (
+				A571AB1C2A206FC600248498 /* Ghostty-Info.plist */,
+				A5B30538299BEAAB0047F10C /* Assets.xcassets */,
+				A5B3053D299BEAAB0047F10C /* Ghostty.entitlements */,
+				A51BFC282B30F26D00E92F16 /* GhosttyDebug.entitlements */,
+				3B39CAA42B33949B00DABEB8 /* GhosttyReleaseLocal.entitlements */,
+				A54CD6ED299BEB14008C95BB /* Sources */,
+				A5D495A3299BECBA00DD1313 /* Frameworks */,
+				A5A1F8862A489D7400D1E8BC /* Resources */,
+				A5B30532299BEAAA0047F10C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5B30532299BEAAA0047F10C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5B30531299BEAAA0047F10C /* Ghostty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5CEAFDA29B8005900646FDA /* SplitView */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEAFDB29B8009000646FDA /* SplitView.swift */,
+				A5CEAFDD29B8058B00646FDA /* SplitView.Divider.swift */,
+			);
+			path = SplitView;
+			sourceTree = "<group>";
+		};
+		A5D495A3299BECBA00DD1313 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A56B880A2A840447007A0E29 /* Carbon.framework */,
+				A5D495A1299BEC7E00DD1313 /* GhosttyKit.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5E112912AF73E4D00C6E0C2 /* ClipboardConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				A5E112922AF73E6E00C6E0C2 /* ClipboardConfirmation.xib */,
+				A5E112942AF73E8A00C6E0C2 /* ClipboardConfirmationController.swift */,
+				A5E112962AF7401B00C6E0C2 /* ClipboardConfirmationView.swift */,
+			);
+			path = ClipboardConfirmation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5B30530299BEAAA0047F10C /* Ghostty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B30540299BEAAB0047F10C /* Build configuration list for PBXNativeTarget "Ghostty" */;
+			buildPhases = (
+				A5B3052D299BEAAA0047F10C /* Sources */,
+				A5B3052E299BEAAA0047F10C /* Frameworks */,
+				A5B3052F299BEAAA0047F10C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ghostty;
+			packageProductDependencies = (
+				A51BFC262B30F1B800E92F16 /* Sparkle */,
+			);
+			productName = Ghostty;
+			productReference = A5B30531299BEAAA0047F10C /* Ghostty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5B30529299BEAAA0047F10C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					A5B30530299BEAAA0047F10C = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = A5B3052C299BEAAA0047F10C /* Build configuration list for PBXProject "Ghostty" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5B30528299BEAAA0047F10C;
+			packageReferences = (
+				A51BFC252B30F1B700E92F16 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			productRefGroup = A5B30532299BEAAA0047F10C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5B30530299BEAAA0047F10C /* Ghostty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5B3052F299BEAAA0047F10C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B30539299BEAAB0047F10C /* Assets.xcassets in Resources */,
+				A51BFC1E2B2FB5CE00E92F16 /* About.xib in Resources */,
+				A5E112932AF73E6E00C6E0C2 /* ClipboardConfirmation.xib in Resources */,
+				A5CDF1912AAF9A5800513312 /* ConfigurationErrors.xib in Resources */,
+				857F63812A5E64F200CA4815 /* MainMenu.xib in Resources */,
+				A596309A2AEE1C6400D64628 /* Terminal.xib in Resources */,
+				55154BE02B33911F001622DC /* ghostty in Resources */,
+				A5A1F8852A489D6800D1E8BC /* terminfo in Resources */,
+				552964E62B34A9B400030505 /* vim in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5B3052D299BEAAA0047F10C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A59630A42AF059BB00D64628 /* Ghostty.SplitNode.swift in Sources */,
+				A59FB5CF2AE0DB50009128F3 /* InspectorView.swift in Sources */,
+				A5D0AF3D2B37804400D21823 /* CodableBridge.swift in Sources */,
+				A5D0AF3B2B36A1DE00D21823 /* TerminalRestorable.swift in Sources */,
+				A596309C2AEE1C9E00D64628 /* TerminalController.swift in Sources */,
+				A56D58892ACDE6CA00508D2C /* ServiceProvider.swift in Sources */,
+				A51BFC222B2FB6B400E92F16 /* AboutView.swift in Sources */,
+				A5278A9B2AA05B2600CD3039 /* Ghostty.Input.swift in Sources */,
+				A59630972AEE163600D64628 /* HostingWindow.swift in Sources */,
+				A59630A02AEF6AEB00D64628 /* TerminalManager.swift in Sources */,
+				A51BFC2B2B30F6BE00E92F16 /* UpdateDelegate.swift in Sources */,
+				A53426352A7DA53D00EBB7A2 /* AppDelegate.swift in Sources */,
+				A5CDF1952AAFA19600513312 /* ConfigurationErrorsView.swift in Sources */,
+				A55B7BBC29B6FC330055DE60 /* SurfaceView.swift in Sources */,
+				A59444F729A2ED5200725BBA /* SettingsView.swift in Sources */,
+				A56D58862ACDDB4100508D2C /* Ghostty.Shell.swift in Sources */,
+				A59630A22AF0415000D64628 /* Ghostty.TerminalSplit.swift in Sources */,
+				A5FEB3002ABB69450068369E /* main.swift in Sources */,
+				A55B7BB829B6F53A0055DE60 /* Package.swift in Sources */,
+				A51B78472AF4B58B00F3EDB9 /* TerminalWindow.swift in Sources */,
+				A55B7BB629B6F47F0055DE60 /* AppState.swift in Sources */,
+				A5CEAFDC29B8009000646FDA /* SplitView.swift in Sources */,
+				A5CDF1932AAF9E0800513312 /* ConfigurationErrorsController.swift in Sources */,
+				A59FB5D12AE0DEA7009128F3 /* MetalView.swift in Sources */,
+				A55685E029A03A9F004303CE /* AppError.swift in Sources */,
+				A535B9DA299C569B0017E2E4 /* ErrorView.swift in Sources */,
+				A51BFC202B2FB64F00E92F16 /* AboutController.swift in Sources */,
+				A5CEAFFF29C2410700646FDA /* Backport.swift in Sources */,
+				A5E112952AF73E8A00C6E0C2 /* ClipboardConfirmationController.swift in Sources */,
+				8503D7C72A549C66006CFF3D /* FullScreenHandler.swift in Sources */,
+				A596309E2AEE1D6C00D64628 /* TerminalView.swift in Sources */,
+				A5CEAFDE29B8058B00646FDA /* SplitView.Divider.swift in Sources */,
+				A5E112972AF7401B00C6E0C2 /* ClipboardConfirmationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3B39CAA22B33946300DABEB8 /* ReleaseLocal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = ReleaseLocal;
+		};
+		3B39CAA32B33946300DABEB8 /* ReleaseLocal */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = GhosttyReleaseLocal.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				EXECUTABLE_NAME = ghostty;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ghostty-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Ghostty;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 0.1;
+				"OTHER_LDFLAGS[arch=*]" = "-lstdc++";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mitchellh.ghostty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = ReleaseLocal;
+		};
+		A5B3053E299BEAAB0047F10C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A5B3053F299BEAAB0047F10C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A5B30541299BEAAB0047F10C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = GhosttyDebug.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				EXECUTABLE_NAME = ghostty;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ghostty-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Ghostty;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 0.1;
+				"OTHER_LDFLAGS[arch=*]" = "-lstdc++";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mitchellh.ghostty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A5B30542299BEAAB0047F10C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Ghostty.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				EXECUTABLE_NAME = ghostty;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Ghostty-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Ghostty;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 0.1;
+				"OTHER_LDFLAGS[arch=*]" = "-lstdc++";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mitchellh.ghostty;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5B3052C299BEAAA0047F10C /* Build configuration list for PBXProject "Ghostty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B3053E299BEAAB0047F10C /* Debug */,
+				A5B3053F299BEAAB0047F10C /* Release */,
+				3B39CAA22B33946300DABEB8 /* ReleaseLocal */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = ReleaseLocal;
+		};
+		A5B30540299BEAAB0047F10C /* Build configuration list for PBXNativeTarget "Ghostty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B30541299BEAAB0047F10C /* Debug */,
+				A5B30542299BEAAB0047F10C /* Release */,
+				3B39CAA32B33946300DABEB8 /* ReleaseLocal */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = ReleaseLocal;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A51BFC252B30F1B700E92F16 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A51BFC262B30F1B800E92F16 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A51BFC252B30F1B700E92F16 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A5B30529299BEAAA0047F10C /* Project object */;
+}

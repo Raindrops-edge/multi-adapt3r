@@ -1,0 +1,16 @@
+*~
+.*.swp
+.swp
+*.log
+.DS_Store
+.vscode/
+.direnv/
+.flatpak-builder/
+zig-cache/
+zig-out/
+/result*
+example/*.wasm
+test/ghostty
+test/cases/**/*.actual.png
+
+glad.zip

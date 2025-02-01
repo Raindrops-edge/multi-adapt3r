@@ -1,0 +1,10 @@
+.{
+    .name = "pixman",
+    .version = "0.42.2",
+    .dependencies = .{
+        .pixman = .{
+            .url = "https://deps.files.ghostty.dev/pixman-pixman-0.42.2.tar.gz",
+            .hash = "12209b9206f9a5d31ccd9a2312cc72cb9dfc3e034aee1883c549dc1d753fae457230",
+        },
+    },
+}
