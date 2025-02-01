@@ -1,0 +1,47 @@
+[files]
+extend-exclude = [
+  # vendored code
+  "vendor/*",
+  "pkg/*",
+  "src/stb/*",
+  # "grey" color names are valid
+  "src/terminal/res/rgb.txt",
+  # Do not self-check
+  "typos.toml",
+  # Fonts
+  "*.ttf",
+  "*.otf",
+  # Images
+  "*.png",
+  "*.ico",
+  "*.icns",
+  # Other
+  "*.pdf",
+  "*.data",
+  "*.xib",
+  "src/cli/lorem_ipsum.txt"
+]
+
+[default]
+extend-ignore-re = [
+  # Ignore typos in test expectations
+  "testing\\.expect[^;]*;",
+  "kHOM\\d*"
+]
+
+[default.extend-words]
+Pn = "Pn"
+thr = "thr"
+# Should be "halves", but for now skip it as it would make diff huge
+halfs = "halfs"
+# Swift oddities
+Requestor = "Requestor"
+iterm = "iterm"
+ACCES = "ACCES"
+wdth = "wdth"
+Strat = "Strat"
+grey = "gray"
+greyscale = "grayscale"
+
+[type.swift.extend-words]
+inout = "inout"

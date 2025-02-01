@@ -1,0 +1,18 @@
+# Docs: https://prettier.io/docs/en/ignore.html
+flake.lock
+vendor/
+**/*.html
+zig-cache/
+zig-out/
+
+# jujutsu
+.jj/
+
+# macos is managed by XCode GUI
+macos/
+
+# website dev run
+website/.next
+
+# shaders
+*.frag
