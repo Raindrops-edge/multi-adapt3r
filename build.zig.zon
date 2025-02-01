@@ -1,0 +1,61 @@
+.{
+    .name = "ghostty",
+    .version = "0.1.0",
+    .paths = .{""},
+    .dependencies = .{
+        // Zig libs
+        .libxev = .{
+            .url = "https://github.com/mitchellh/libxev/archive/43c7e4b3308f359e5b758db2d824d7c447f4ed3f.tar.gz",
+            .hash = "1220aec83b6367c6bc64ca781828e0ad817fb38e7fca7331bd6d736b6896910f6637",
+        },
+        .mach_glfw = .{
+            .url = "https://github.com/mitchellh/mach-glfw/archive/37c2995f31abcf7e8378fba68ddcf4a3faa02de0.tar.gz",
+            .hash = "12206ed982e709e565d536ce930701a8c07edfd2cfdce428683f3f2a601d37696a62",
+            .lazy = true,
+        },
+        .zig_objc = .{
+            .url = "https://github.com/mitchellh/zig-objc/archive/fe5ac419530cf800294369d996133fe9cd067aec.tar.gz",
+            .hash = "122034b3e15d582d8d101a7713e5f13c872b8b8eb6d9cb47515b8e34ee75e122630d",
+        },
+        .zig_js = .{
+            .url = "https://github.com/mitchellh/zig-js/archive/d0b8b0a57c52fbc89f9d9fecba75ca29da7dd7d1.tar.gz",
+            .hash = "12205a66d423259567764fa0fc60c82be35365c21aeb76c5a7dc99698401f4f6fefc",
+        },
+        .ziglyph = .{
+            .url = "https://deps.files.ghostty.dev/ziglyph-b89d43d1e3fb01b6074bc1f7fc980324b04d26a5.tar.gz",
+            .hash = "12207831bce7d4abce57b5a98e8f3635811cfefd160bca022eb91fe905d36a02cf25",
+        },
+
+        // C libs
+        .cimgui = .{ .path = "./pkg/cimgui" },
+        .fontconfig = .{ .path = "./pkg/fontconfig" },
+        .freetype = .{ .path = "./pkg/freetype" },
+        .harfbuzz = .{ .path = "./pkg/harfbuzz" },
+        .highway = .{ .path = "./pkg/highway" },
+        .libpng = .{ .path = "./pkg/libpng" },
+        .macos = .{ .path = "./pkg/macos" },
+        .oniguruma = .{ .path = "./pkg/oniguruma" },
+        .opengl = .{ .path = "./pkg/opengl" },
+        .pixman = .{ .path = "./pkg/pixman" },
+        .sentry = .{ .path = "./pkg/sentry" },
+        .simdutf = .{ .path = "./pkg/simdutf" },
+        .utfcpp = .{ .path = "./pkg/utfcpp" },
+        .wuffs = .{ .path = "./pkg/wuffs" },
+        .zlib = .{ .path = "./pkg/zlib" },
+
+        // Shader translation
+        .glslang = .{ .path = "./pkg/glslang" },
+        .spirv_cross = .{ .path = "./pkg/spirv-cross" },
+
+        // Other
+        .apple_sdk = .{ .path = "./pkg/apple-sdk" },
+        .iterm2_themes = .{
+            .url = "https://github.com/mbadolato/iTerm2-Color-Schemes/archive/b4a9c4d.tar.gz",
+            .hash = "122056fbb29863ec1678b7954fb76b1533ad8c581a34577c1b2efe419e29e05596df",
+        },
+        .vaxis = .{
+            .url = "git+https://github.com/rockorager/libvaxis?ref=main#a8baf9ce371b89a84383130c82549bb91401d15a",
+            .hash = "12207f53d7dddd3e5ca6577fcdd137dcf1fa32c9f22cbb0911ad0701cde4095a1c4c",
+        },
+    },
+}

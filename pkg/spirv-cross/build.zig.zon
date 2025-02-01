@@ -1,0 +1,13 @@
+.{
+    .name = "spirv-cross",
+    .version = "13.1.1",
+    .paths = .{""},
+    .dependencies = .{
+        .spirv_cross = .{
+            .url = "https://github.com/KhronosGroup/SPIRV-Cross/archive/476f384eb7d9e48613c45179e502a15ab95b6b49.tar.gz",
+            .hash = "1220fb3b5586e8be67bc3feb34cbe749cf42a60d628d2953632c2f8141302748c8da",
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}

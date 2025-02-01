@@ -1,0 +1,14 @@
+import VTSequence from "@/components/VTSequence";
+
+# Restore Cursor (DECRC)
+
+<VTSequence sequence={["ESC", "8"]} />
+
+Restore the cursor-related state saved via [Save Cursor (DECSC)](/vt/decsc).
+
+If a cursor was never previously saved, this sets all the typically saved
+values to their default values.
+
+## Validation
+
+Validation is shared with [Save Cursor (DECSC)](/vt/decsc).
