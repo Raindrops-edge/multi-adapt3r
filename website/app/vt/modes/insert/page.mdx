@@ -1,0 +1,89 @@
+import VTMode from "@/components/VTMode";
+
+# Insert
+
+<VTMode value={4} ansi={true} />
+
+When enabled, text is written to the cell under the cursor
+and all existing content is shifted right. When disabled, text
+overwrites existing content.
+
+This mode is unset as part of both [full reset (RIS)](/vt/ris)
+and [soft reset (DECSTR)](/vt/decstr).
+
+If a multi-cell character (such as "橋") is shifted so that the cell is split
+in half, the multi-cell character can either be clipped or erased.
+
+This mode is typically disabled on terminal startup.
+
+## Validation
+
+### INSERT V-1: Simple Usage
+
+```bash
+printf "\033[1;1H" # move to top-left
+printf "\033[0J" # clear screen
+printf "123456"
+printf "\033[1G"
+printf "\033[4h"
+printf "ABC"
+```
+
+```
+|ABC123456_|
+```
+
+### INSERT V-2: Pushing Off the Screen Edge
+
+```bash
+cols=$(tput cols)
+printf "\033[1;1H" # move to top-left
+printf "\033[0J" # clear screen
+printf "\033[${cols}G"
+printf "\033[6D"
+printf "123456"
+printf "\033[6D"
+printf "\033[4h"
+printf "ABC"
+```
+
+```
+|____ABC1234|
+```
+
+### INSERT V-3: Writing on the Screen Edge
+
+```bash
+cols=$(tput cols)
+printf "\033[1;1H" # move to top-left
+printf "\033[0J" # clear screen
+printf "\033[${cols}G"
+printf "\033[6D"
+printf "123456"
+printf "\033[1D"
+printf "\033[4h"
+printf "ABC"
+```
+
+```
+|____12345AB|
+|Cc_________|
+```
+
+### INSERT V-3: Splitting a Multi-Cell Character
+
+```bash
+cols=$(tput cols)
+printf "\033[1;1H" # move to top-left
+printf "\033[0J" # clear screen
+printf "\033[${cols}G"
+printf "\033[6D"
+printf "1234橋"
+printf "\033[6D"
+printf "\033[4h"
+printf "A"
+```
+
+```
+|_____A1234_|
+```

@@ -1,0 +1,17 @@
+import VTMode from "@/components/VTMode";
+
+# Send-Receive Mode (SRM)
+
+<VTMode value={12} ansi={true} />
+
+If reset, characters entered by the keyboard are shown on the screen
+as well as being sent to the running program. If set, keyboard input
+is sent only to the running program and the running program can choose
+whether it wants to echo it back.
+
+This mode is typically enabled on terminal startup.
+
+This mode is generally unsupported across most terminals today and
+is recommended to be retired.[^1]
+
+[^1]: https://gitlab.gnome.org/GNOME/vte/-/issues/69

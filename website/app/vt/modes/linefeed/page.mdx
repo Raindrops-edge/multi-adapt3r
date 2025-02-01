@@ -1,0 +1,30 @@
+import VTMode from "@/components/VTMode";
+
+# Linefeed
+
+<VTMode value={20} ansi={true} />
+
+When enabled, [LF](/vt/lf), [VF](/vt/vf), [FF](/vt/ff) all add an
+automatic [carriage return](/vt/cr) after the linefeed. Additionally,
+all `\r` sent from the terminal to the application are replaced by
+`\r\n`.
+
+This mode is typically disabled on terminal startup.
+
+## Validation
+
+### LINEFEED V-1: Simple Usage
+
+```bash
+printf "\033[1;1H" # move to top-left
+printf "\033[0J" # clear screen
+printf "123456"
+printf "\033[20h"
+printf "\n"
+printf "X"
+```
+
+```
+|123456____|
+|Xc________|
+```

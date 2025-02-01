@@ -1,0 +1,30 @@
+import VTMode from "@/components/VTMode";
+
+# Keyboard Action Mode (KAM)
+
+<VTMode value={2} ansi={true} />
+
+Disable all keyboard input.
+
+This mode is unset as part of both [full reset (RIS)](/vt/ris)
+and [soft reset (DECSTR)](/vt/decstr).
+
+A poorly behaved terminal program can lock the terminal emulator
+using this command. Terminal emulators should provide a mechanism
+to reset this or outright disable it.
+
+This mode is typically disabled on terminal startup.
+
+## Validation
+
+### KAM V-1: Disable Keyboard Input
+
+```bash
+printf "\033[1;1H" # move to top-left
+printf "\033[0J" # clear screen
+printf "Keyboard input is now disabled.\n"
+printf "\033[2h"
+sleep 5
+printf "\033[2l"
+printf "Keyboard input is re-enabled.\n"
+```
