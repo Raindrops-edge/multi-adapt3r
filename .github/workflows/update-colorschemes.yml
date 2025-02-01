@@ -1,0 +1,72 @@
+name: Update iTerm2 colorschemes
+on:
+  schedule:
+    # Once a week
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+jobs:
+  update-iterm2-schemes:
+    if: github.repository == 'ghostty-org/ghostty'
+    runs-on: namespace-profile-ghostty-sm
+    permissions:
+      # Needed for create-pull-request action
+      contents: write
+      pull-requests: write
+    env:
+      ZIG_LOCAL_CACHE_DIR: /zig/local-cache
+      ZIG_GLOBAL_CACHE_DIR: /zig/global-cache
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Cache
+        uses: namespacelabs/nscloud-cache-action@v1.2.0
+        with:
+          path: |
+            /nix
+            /zig
+
+      - name: Setup Nix
+        uses: cachix/install-nix-action@v30
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: cachix/cachix-action@v15
+        with:
+          name: ghostty
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Run zig fetch
+        id: zig_fetch
+        run: |
+          UPSTREAM_REV="$(curl "https://api.github.com/repos/mbadolato/iTerm2-Color-Schemes/commits/master" | jq -r '.sha')"
+          nix develop -c zig fetch --save="iterm2_themes" "https://github.com/mbadolato/iTerm2-Color-Schemes/archive/$UPSTREAM_REV.tar.gz"
+          echo "upstream_rev=$UPSTREAM_REV" >> "$GITHUB_OUTPUT"
+
+      - name: Update zig cache hash
+        run: |
+          # Only proceed if build.zig.zon has changed
+          if ! git diff --exit-code build.zig.zon; then
+            nix develop -c ./nix/build-support/check-zig-cache-hash.sh --update
+            nix develop -c ./nix/build-support/check-zig-cache-hash.sh
+          fi
+
+      # Verify the build still works. We choose an arbitrary build type
+      # as a canary instead of testing all build types.
+      - name: Test Build
+        run: nix develop -c zig build -Dapp-runtime=gtk -Dgtk-adwaita=true
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: Update iTerm2 colorschemes
+          base: main
+          branch: iterm2_colors_action
+          commit-message: "deps: Update iTerm2 color schemes"
+          add-paths: |
+            build.zig.zon
+            nix/zigCacheHash.nix
+          body: |
+            Upstream revision: https://github.com/mbadolato/iTerm2-Color-Schemes/tree/${{ steps.zig_fetch.outputs.upstream_rev }}
+          labels: dependencies

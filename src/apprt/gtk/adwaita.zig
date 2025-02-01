@@ -1,0 +1,58 @@
+const std = @import("std");
+const c = @import("c.zig").c;
+const build_options = @import("build_options");
+const Config = @import("../../config.zig").Config;
+
+/// Returns true if Ghostty is configured to build with libadwaita and
+/// the configuration has enabled adwaita.
+///
+/// For a comptime version of this function, use `versionAtLeast` in
+/// a comptime context with all the version numbers set to 0.
+///
+/// This must be `inline` so that the comptime check noops conditional
+/// paths that are not enabled.
+pub inline fn enabled(config: *const Config) bool {
+    return build_options.adwaita and
+        config.@"gtk-adwaita";
+}
+
+/// Verifies that the running libadwaita version is at least the given
+/// version. This will return false if Ghostty is configured to
+/// not build with libadwaita.
+///
+/// This can be run in both a comptime and runtime context. If it
+/// is run in a comptime context, it will only check the version
+/// in the headers. If it is run in a runtime context, it will
+/// check the actual version of the library we are linked against.
+/// So generally  you probably want to do both checks!
+pub fn versionAtLeast(
+    comptime major: u16,
+    comptime minor: u16,
+    comptime micro: u16,
+) bool {
+    if (comptime !build_options.adwaita) return false;
+
+    // If our header has lower versions than the given version,
+    // we can return false immediately. This prevents us from
+    // compiling against unknown symbols and makes runtime checks
+    // very slightly faster.
+    if (comptime c.ADW_MAJOR_VERSION < major or
+        c.ADW_MINOR_VERSION < minor or
+        c.ADW_MICRO_VERSION < micro) return false;
+
+    // If we're in comptime then we can't check the runtime version.
+    if (@inComptime()) return true;
+
+    // We use the functions instead of the constants such as
+    // c.ADW_MINOR_VERSION because the function gets the actual
+    // runtime version.
+    if (c.adw_get_major_version() >= major) {
+        if (c.adw_get_major_version() > major) return true;
+        if (c.adw_get_minor_version() >= minor) {
+            if (c.adw_get_minor_version() > minor) return true;
+            return c.adw_get_micro_version() >= micro;
+        }
+    }
+
+    return false;
+}

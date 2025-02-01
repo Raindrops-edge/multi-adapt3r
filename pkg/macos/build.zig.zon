@@ -1,0 +1,8 @@
+.{
+    .name = "macos",
+    .version = "0.1.0",
+    .paths = .{""},
+    .dependencies = .{
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
