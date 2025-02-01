@@ -1,0 +1,14 @@
+.{
+    .name = "sentry",
+    .version = "0.7.8",
+    .paths = .{""},
+    .dependencies = .{
+        .sentry = .{
+            .url = "https://github.com/getsentry/sentry-native/archive/refs/tags/0.7.8.tar.gz",
+            .hash = "1220446be831adcca918167647c06c7b825849fa3fba5f22da394667974537a9c77e",
+        },
+
+        .apple_sdk = .{ .path = "../apple-sdk" },
+        .breakpad = .{ .path = "../breakpad" },
+    },
+}
