@@ -1,0 +1,8 @@
+.{
+    .name = "simdutf",
+    .version = "5.2.8",
+    .paths = .{""},
+    .dependencies = .{
+        .apple_sdk = .{ .path = "../apple-sdk" },
+    },
+}
